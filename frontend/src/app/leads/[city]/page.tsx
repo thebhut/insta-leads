@@ -6,6 +6,12 @@ type Props = {
   params: Promise<{ city: string }>;
 };
 
+// Generate static routes at build time for FTP export
+export async function generateStaticParams() {
+  const crawlCities = CITIES.slice(0, 10);
+  return crawlCities.map((city) => ({ city }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
   const city = formatTitle(resolvedParams.city);

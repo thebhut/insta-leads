@@ -7,6 +7,21 @@ type Props = {
   params: Promise<{ city: string; niche: string }>;
 };
 
+// Generate static routes at build time for FTP export
+export async function generateStaticParams() {
+  // Only build the top 10x10 combinations initially to keep build times low for GitHub Actions
+  const crawlCities = CITIES.slice(0, 10);
+  const crawlNiches = NICHES.slice(0, 10);
+  
+  const paths = [];
+  for (const city of crawlCities) {
+    for (const niche of crawlNiches) {
+      paths.push({ city, niche });
+    }
+  }
+  return paths;
+}
+
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {

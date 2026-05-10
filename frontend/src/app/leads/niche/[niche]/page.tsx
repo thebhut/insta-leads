@@ -6,6 +6,12 @@ type Props = {
   params: Promise<{ niche: string }>;
 };
 
+// Generate static routes at build time for FTP export
+export async function generateStaticParams() {
+  const crawlNiches = NICHES.slice(0, 10);
+  return crawlNiches.map((niche) => ({ niche }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
   const niche = formatTitle(resolvedParams.niche);
