@@ -5,8 +5,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Ensure trailing slashes are false for static hosting compatibility on Hostinger
-  trailingSlash: false,
+  // Set trailing slashes to true to force Next.js to generate index.html files inside directories.
+  // This prevents Apache/Hostinger from throwing 403 Forbidden errors when it sees a folder.
+  trailingSlash: true,
 };
 
 export default nextConfig;
