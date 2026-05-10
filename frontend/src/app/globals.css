@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --primary: #6366f1;
   --primary-hover: #4f46e5;
@@ -18,25 +20,13 @@ body {
   background: var(--background);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   margin: 0;
-  padding: 40px 20px;
+  padding: 0; /* Let Tailwind handle padding */
   line-height: 1.5;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-}
-
-h1 {
-  text-align: center;
-  color: var(--foreground);
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 2rem;
-  letter-spacing: -0.025em;
-  background: linear-gradient(to right, var(--primary), #a855f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .search-box {
@@ -65,7 +55,7 @@ input[type="text"]:focus {
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-button {
+.search-box button {
   padding: 12px 24px;
   background-color: var(--primary);
   color: white;
@@ -77,16 +67,16 @@ button {
   transition: all 0.2s;
 }
 
-button:hover:not(:disabled) {
+.search-box button:hover:not(:disabled) {
   background-color: var(--primary-hover);
   transform: translateY(-1px);
 }
 
-button:active:not(:disabled) {
+.search-box button:active:not(:disabled) {
   transform: translateY(0);
 }
 
-button:disabled {
+.search-box button:disabled {
   background-color: var(--text-muted);
   opacity: 0.6;
   cursor: not-allowed;
