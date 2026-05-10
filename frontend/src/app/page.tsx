@@ -127,20 +127,28 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
-    <div className="container">
-      <h1>V1 Instagram Lead Finder</h1>
+    <div className="container" style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem 1rem' }}>
+      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#0f172a', marginBottom: '1rem', lineHeight: '1.2' }}>
+          Discover the Local Digital Economy
+        </h1>
+        <p style={{ fontSize: '1.125rem', color: '#64748b', maxWidth: '700px', margin: '0 auto' }}>
+          The largest searchable database of Instagram-first local businesses, digital adoption trends, and missing web infrastructure.
+        </p>
+      </div>
       
-      <div className="search-box">
+      <div className="search-box" style={{ display: 'flex', gap: '0.5rem', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
         <input
           type="text"
-          placeholder="e.g., restaurants in Ahmedabad"
+          placeholder="Search datasets (e.g. fastest growing cafes in Miami)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
           disabled={loading}
+          style={{ flex: 1, padding: '1rem 1.25rem', borderRadius: '0.5rem', border: '1px solid #cbd5e1', fontSize: '1rem', outline: 'none' }}
         />
-        <button onClick={handleSearch} disabled={loading || !query}>
-          {loading ? "Searching..." : "Search"}
+        <button onClick={handleSearch} disabled={loading || !query} style={{ padding: '0 1.5rem', borderRadius: '0.5rem', background: '#4f46e5', color: 'white', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>
+          {loading ? "Analyzing..." : "Search"}
         </button>
       </div>
 
@@ -187,6 +195,39 @@ export default function Home() {
           </div>
         </>
       )}
+
+      {/* Internal Linking for Programmatic SEO Discoverability */}
+      <div className="mt-16 pt-12 border-t border-slate-200" style={{ marginTop: '5rem', paddingTop: '3rem', borderTop: '1px solid #e2e8f0' }}>
+        <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1e293b', marginBottom: '1rem', textAlign: 'center' }}>Explore Local Business Datasets</h3>
+        <p style={{ color: '#64748b', marginBottom: '2.5rem', textAlign: 'center' }}>Dive into our massive repository of local search trends, social media growth, and web infrastructure data.</p>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', maxWidth: '1000px', margin: '0 auto' }}>
+          <div>
+            <h4 style={{ fontWeight: 'bold', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center' }}><span style={{ color: '#3b82f6', marginRight: '0.5rem' }}>🔥</span> Viral & Trending</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <li><a href="/trends/austin/restaurants" style={{ color: '#4f46e5', textDecoration: 'none' }}>Fastest Growing Restaurants in Austin</a></li>
+              <li><a href="/trends/los-angeles/gyms" style={{ color: '#4f46e5', textDecoration: 'none' }}>Trending Gyms in Los Angeles</a></li>
+              <li><a href="/trends/chicago/cafes" style={{ color: '#4f46e5', textDecoration: 'none' }}>Viral Cafes in Chicago</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style={{ fontWeight: 'bold', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center' }}><span style={{ color: '#10b981', marginRight: '0.5rem' }}>📊</span> Local Rankings</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <li><a href="/directory/new-york/salons" style={{ color: '#4f46e5', textDecoration: 'none' }}>Top Salons in New York</a></li>
+              <li><a href="/directory/houston/dentists" style={{ color: '#4f46e5', textDecoration: 'none' }}>Best Dentists in Houston</a></li>
+              <li><a href="/directory/phoenix/plumbers" style={{ color: '#4f46e5', textDecoration: 'none' }}>Top Ranked Plumbers in Phoenix</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 style={{ fontWeight: 'bold', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center' }}><span style={{ color: '#ef4444', marginRight: '0.5rem' }}>💻</span> Digital Deficits</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <li><a href="/leads/denver/boutiques" style={{ color: '#4f46e5', textDecoration: 'none' }}>Denver Boutiques Missing Websites</a></li>
+              <li><a href="/leads/miami/spas" style={{ color: '#4f46e5', textDecoration: 'none' }}>Miami Spas Without Websites</a></li>
+              <li><a href="/reports/top-us-cities-without-websites" style={{ color: '#4f46e5', textDecoration: 'none', fontWeight: '600' }}>Report: Cities Most Dependent on IG &rarr;</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
