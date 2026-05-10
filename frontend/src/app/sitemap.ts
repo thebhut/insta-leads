@@ -51,10 +51,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const programmaticPages: MetadataRoute.Sitemap = [];
   
   // STRATEGY: Gradual Indexing Rollout
-  // We now have 3 massive architectural silos: /leads, /directory, and /trends
-  // We will expose a small sample of each for the initial crawl to train Google's crawler
-  const crawlCities = CITIES.slice(0, 10);
-  const crawlNiches = NICHES.slice(0, 10);
+  // TEMPORARY FIX: Reducing to 1 city and 1 niche to establish Hostinger FTP sync state
+  const crawlCities = CITIES.slice(0, 1);
+  const crawlNiches = NICHES.slice(0, 1);
 
   for (const city of crawlCities) {
     for (const niche of crawlNiches) {
