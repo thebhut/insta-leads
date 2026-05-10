@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { CITIES, NICHES } from '@/lib/pSEO';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://instaleads.app'; // Replace with your actual production URL
 
