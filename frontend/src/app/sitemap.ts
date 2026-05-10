@@ -51,9 +51,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const programmaticPages: MetadataRoute.Sitemap = [];
   
   // STRATEGY: Gradual Indexing Rollout
-  // TEMPORARY FIX: Reducing to 1 city and 1 niche to establish Hostinger FTP sync state
-  const crawlCities = CITIES.slice(0, 1);
-  const crawlNiches = NICHES.slice(0, 1);
+  // TEMPORARY FIX: Reducing to 3 cities and 3 niches to stay under Hostinger's 1-hour FTP timeout
+  const crawlCities = CITIES.slice(0, 3);
+  const crawlNiches = NICHES.slice(0, 3);
 
   for (const city of crawlCities) {
     for (const niche of crawlNiches) {
