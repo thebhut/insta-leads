@@ -55,21 +55,14 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
   
   // REAL DATA INGESTION
   let leads = [];
-  let isSimulated = true;
-  
   const typedRealData = realData as any;
-  if (typedRealData[resolvedParams.city]?.[resolvedParams.niche]) {
-    const cityNicheData = typedRealData[resolvedParams.city][resolvedParams.niche];
-    leads = cityNicheData.leads;
-    isSimulated = false;
-    
+  const cityData = typedRealData[resolvedParams.city];
+  const nicheData = cityData ? cityData[resolvedParams.niche] : null;
+  
+  if (nicheData) {
+    leads = nicheData.leads;
     // Update data summary with real counts
-    data.missingWebsites = cityNicheData.missingWebsites;
-    data.isSimulated = false;
-  } else {
-    const mock = getMockLeads(resolvedParams.city, resolvedParams.niche, 8, 'missing-website');
-    leads = mock.leads;
-    isSimulated = mock.isSimulated;
+    data.missingWebsites = nicheData.missingWebsites;
   }
   
   const nearbyCities = getRandomItems(CITIES, 4, resolvedParams.city).map(formatTitle);
@@ -132,17 +125,12 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
         </nav>
         
         <div className="flex gap-2">
-          {isSimulated && (
-            <div className="flex items-center text-xs font-semibold text-amber-700 bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200 w-fit">
-              <span className="mr-1">⚠️</span> Sample Dataset
-            </div>
-          )}
           <div className="flex items-center text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200 w-fit">
             <span className="relative flex h-2 w-2 mr-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            Last scanned {data.hoursAgo} hours ago
+            {nicheData ? `Last scanned ${data.hoursAgo} hours ago` : 'Scan in progress...'}
           </div>
         </div>
       </div>
@@ -151,9 +139,9 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
       <div className="bg-slate-50 border-l-4 border-indigo-500 p-6 mb-8 rounded-r-lg">
         <h2 className="sr-only">AI Search Summary</h2>
         <p className="text-slate-700 font-medium leading-relaxed">
-          <strong>Summary:</strong> We identified <span className="text-indigo-600">{data.missingWebsites} {niche}</span> in {city} that are actively marketing on Instagram but currently lack a dedicated website. 
-          The average audience size for these businesses is {data.formattedFollowers} followers. {data.microContent}
-          This dataset was updated {data.hoursAgo} hours ago and includes {data.newThisWeek} newly discovered businesses this week.
+          <strong>Summary:</strong> We identified <span className="text-indigo-600">{nicheData ? data.missingWebsites : 'multiple'} {niche}</span> in {city} that are actively marketing on Instagram but currently lack a dedicated website. 
+          {nicheData && `The average audience size for these businesses is ${data.formattedFollowers} followers.`} {data.microContent}
+          This dataset is updated weekly and includes newly discovered businesses in {city} every 7 days.
         </p>
       </div>
 
@@ -201,37 +189,37 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 relative">
-                {leads.map((lead: any, i: number) => (
-                  <tr key={lead.id} className={`hover:bg-slate-50 transition-colors ${lead.isBlurred ? 'select-none' : ''}`}>
-                    <td className="py-4 px-6">
-                      <div className={`font-medium text-slate-900 ${lead.isBlurred ? 'blur-sm' : ''}`}>{lead.name}</div>
-                      <div className="text-xs text-slate-500 mt-1">{city}, India</div>
-                    </td>
-                    <td className="py-4 px-6">
-                      <div className={`text-indigo-600 font-medium ${lead.isBlurred ? 'blur-sm' : ''}`}>{lead.handle}</div>
-                    </td>
-                    <td className="py-4 px-6">
-                      <div className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800 ${lead.isBlurred ? 'blur-sm' : ''}`}>
-                        {lead.formattedFollowers}
+                {leads.length > 0 ? (
+                  leads.map((lead: any, i: number) => (
+                    <tr key={lead.id} className="hover:bg-slate-50 transition-colors">
+                      <td className="py-4 px-6">
+                        <div className="font-medium text-slate-900">{lead.name}</div>
+                        <div className="text-xs text-slate-500 mt-1">{city}, India</div>
+                      </td>
+                      <td className="py-4 px-6">
+                        <div className="text-indigo-600 font-medium">{lead.handle}</div>
+                      </td>
+                      <td className="py-4 px-6">
+                        <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                          {lead.formattedFollowers}
+                        </div>
+                      </td>
+                      <td className="py-4 px-6 text-right">
+                        <button className="text-sm font-semibold text-indigo-600 hover:text-indigo-800">Analyze</button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan={4} className="py-20 text-center">
+                      <div className="flex flex-col items-center justify-center">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mb-4"></div>
+                        <p className="text-slate-500 font-medium">Fresh scan for {niche} in {city} is scheduled...</p>
+                        <p className="text-xs text-slate-400 mt-1">Real data will appear here automatically once the search completes.</p>
                       </div>
                     </td>
-                    <td className="py-4 px-6 text-right">
-                      {lead.isBlurred ? (
-                        <span className="text-xs font-semibold text-slate-400">Locked</span>
-                      ) : (
-                        <button className="text-sm font-semibold text-indigo-600 hover:text-indigo-800">Analyze</button>
-                      )}
-                    </td>
                   </tr>
-                ))}
-                
-                {/* Overlay for blurred rows */}
-                <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white via-white/80 to-transparent flex flex-col items-center justify-end pb-8">
-                  <p className="font-bold text-slate-900 mb-4 text-lg">Unlock {data.missingWebsites - 2} more {niche} leads in {city}</p>
-                  <Link href={`/?q=${resolvedParams.niche}+in+${resolvedParams.city}`} className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-lg shadow-lg hover:bg-indigo-700 transition-transform transform hover:scale-105">
-                    View Full Dataset
-                  </Link>
-                </div>
+                )}
               </tbody>
             </table>
           </div>
