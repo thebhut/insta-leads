@@ -9,9 +9,9 @@ type Props = {
 
 // Generate static routes at build time for FTP export
 export async function generateStaticParams() {
-  // Only build the top 10x10 combinations initially to keep build times low for GitHub Actions
-  const crawlCities = CITIES.slice(0, 3);
-  const crawlNiches = NICHES.slice(0, 3);
+  // Now running at full scale on Vercel
+  const crawlCities = CITIES;
+  const crawlNiches = NICHES;
   
   const paths = [];
   for (const city of crawlCities) {

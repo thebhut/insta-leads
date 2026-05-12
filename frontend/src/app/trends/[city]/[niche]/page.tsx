@@ -9,8 +9,8 @@ type Props = {
 
 // Generate static routes at build time for FTP export
 export async function generateStaticParams() {
-  const crawlCities = CITIES.slice(0, 3);
-  const crawlNiches = NICHES.slice(0, 3);
+  const crawlCities = CITIES;
+  const crawlNiches = NICHES;
   const paths = [];
   for (const city of crawlCities) {
     for (const niche of crawlNiches) {

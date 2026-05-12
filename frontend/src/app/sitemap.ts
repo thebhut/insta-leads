@@ -50,10 +50,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Generate the programmatic SEO URLs dynamically
   const programmaticPages: MetadataRoute.Sitemap = [];
   
-  // STRATEGY: Gradual Indexing Rollout
-  // TEMPORARY FIX: Reducing to 3 cities and 3 niches to stay under Hostinger's 1-hour FTP timeout
-  const crawlCities = CITIES.slice(0, 3);
-  const crawlNiches = NICHES.slice(0, 3);
+  // STRATEGY: Full Scale Rollout
+  // Since we are moving to Vercel, we can generate all possible pages instantly.
+  const crawlCities = CITIES;
+  const crawlNiches = NICHES;
 
   for (const city of crawlCities) {
     for (const niche of crawlNiches) {

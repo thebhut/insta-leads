@@ -8,7 +8,7 @@ type Props = {
 
 // Generate static routes at build time for FTP export
 export async function generateStaticParams() {
-  const crawlCities = CITIES.slice(0, 3);
+  const crawlCities = CITIES;
   return crawlCities.map((city) => ({ city }));
 }
 
