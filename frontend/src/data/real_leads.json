@@ -146,19 +146,19 @@
   },
   "mumbai": {
     "restaurants": {
-      "lastUpdated": "2026-05-12T09:35:02.692Z",
+      "lastUpdated": "2026-05-12T09:49:29.390Z",
       "totalScanned": 15,
-      "missingWebsites": 4,
+      "missingWebsites": 5,
       "isSimulated": false,
       "leads": [
         {
           "id": "R2FsbG9w",
           "name": "Gallops Restaurant",
           "handle": "@@gallopsmumbai",
-          "followers": "71K",
-          "formattedFollowers": "71K",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
           "hasWebsite": false,
-          "isTrending": true
+          "isTrending": false
         },
         {
           "id": "RmFyaGFu",
@@ -167,11 +167,11 @@
           "followers": "N/A",
           "formattedFollowers": "N/A",
           "hasWebsite": false,
-          "isTrending": false
+          "isTrending": true
         },
         {
-          "id": "Q2l0cnVz",
-          "name": "Citrus - Fine Dining Restaurant",
+          "id": "S2h5YmVy",
+          "name": "Khyber",
           "handle": "N/A",
           "followers": "N/A",
           "formattedFollowers": "N/A",
@@ -179,8 +179,17 @@
           "isTrending": false
         },
         {
-          "id": "QmFsd2Fz",
-          "name": "Balwas Restaurant (Since 1970) Mughlai & Chinese",
+          "id": "QnkgVGhl",
+          "name": "By The Mekong",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": false,
+          "isTrending": false
+        },
+        {
+          "id": "VHJpc2hu",
+          "name": "Trishna",
           "handle": "N/A",
           "followers": "N/A",
           "formattedFollowers": "N/A",

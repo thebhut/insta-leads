@@ -57,11 +57,12 @@ async function searchViaBing(page, businessName, city) {
     const cleanName = businessName.split('|')[0].split(' - ')[0].trim();
     const cityStr = city ? city : '';
 
-    // Try multiple query strategies
+    // Try multiple query strategies (More aggressive for Indian businesses)
     const queries = [
         `"${cleanName}" ${cityStr} site:instagram.com`,
-        `${cleanName} ${cityStr} instagram profile`,
-        `${cleanName} instagram`,
+        `${cleanName} ${cityStr} instagram official`,
+        `${cleanName} ${cityStr} business instagram`,
+        `${cleanName} ${cityStr} IG profile`,
     ];
 
     const allCandidates = [];
@@ -130,37 +131,42 @@ async function searchViaBing(page, businessName, city) {
 async function searchViaGoogle(page, businessName, city) {
     const cleanName = businessName.split('|')[0].split(' - ')[0].trim();
     const cityStr = city ? city : '';
-    const q = `${cleanName} ${cityStr} instagram`;
-    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(q)}`;
+    
+    const queries = [
+        `"${cleanName}" ${cityStr} instagram`,
+        `${cleanName} ${cityStr} official instagram page`,
+    ];
 
-    try {
-        await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
-        await randomDelay(1000, 2000);
-    } catch (e) {
-        return [];
-    }
-
-    const candidates = [];
+    const allCandidates = [];
     const seenUsernames = new Set();
 
-    try {
-        const links = await page.evaluate(() => {
-            const anchors = Array.from(document.querySelectorAll('a[href]'));
-            return anchors
-                .map(a => a.href)
-                .filter(href => href && href.includes('instagram.com/'));
-        });
+    for (const q of queries) {
+        const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(q)}`;
 
-        for (const href of links) {
-            const username = parseUsernameFromCite(href);
-            if (username && !seenUsernames.has(username.toLowerCase())) {
-                seenUsernames.add(username.toLowerCase());
-                candidates.push(`https://www.instagram.com/${username}/`);
+        try {
+            await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            await randomDelay(1000, 2000);
+
+            const links = await page.evaluate(() => {
+                const anchors = Array.from(document.querySelectorAll('a[href]'));
+                return anchors
+                    .map(a => a.href)
+                    .filter(href => href && href.includes('instagram.com/'));
+            });
+
+            for (const href of links) {
+                const username = parseUsernameFromCite(href);
+                if (username && !seenUsernames.has(username.toLowerCase())) {
+                    seenUsernames.add(username.toLowerCase());
+                    allCandidates.push(`https://www.instagram.com/${username}/`);
+                }
             }
+        } catch (e) {
+            console.log(`  ⚠ Google navigate failed for query: ${q}`);
         }
-    } catch (e) {}
+    }
 
-    return candidates;
+    return allCandidates;
 }
 
 /**
