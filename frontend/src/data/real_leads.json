@@ -143,5 +143,51 @@
         }
       ]
     }
+  },
+  "mumbai": {
+    "restaurants": {
+      "lastUpdated": "2026-05-12T09:35:02.692Z",
+      "totalScanned": 15,
+      "missingWebsites": 4,
+      "isSimulated": false,
+      "leads": [
+        {
+          "id": "R2FsbG9w",
+          "name": "Gallops Restaurant",
+          "handle": "@@gallopsmumbai",
+          "followers": "71K",
+          "formattedFollowers": "71K",
+          "hasWebsite": false,
+          "isTrending": true
+        },
+        {
+          "id": "RmFyaGFu",
+          "name": "Farhang Restaurant",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": false,
+          "isTrending": false
+        },
+        {
+          "id": "Q2l0cnVz",
+          "name": "Citrus - Fine Dining Restaurant",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": false,
+          "isTrending": false
+        },
+        {
+          "id": "QmFsd2Fz",
+          "name": "Balwas Restaurant (Since 1970) Mughlai & Chinese",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": false,
+          "isTrending": false
+        }
+      ]
+    }
   }
 }
