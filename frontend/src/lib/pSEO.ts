@@ -1,12 +1,12 @@
 // This file contains helpers for generating programmatic SEO content and pseudo-random data
 
 export const CITIES = [
-  'new-york', 'los-angeles', 'chicago', 'houston', 'phoenix', 
-  'philadelphia', 'san-antonio', 'san-diego', 'dallas', 'austin',
-  'jacksonville', 'san-jose', 'fort-worth', 'columbus', 'charlotte',
-  'san-francisco', 'indianapolis', 'seattle', 'denver', 'washington',
-  'boston', 'el-paso', 'nashville', 'detroit', 'oklahoma-city',
-  'portland', 'las-vegas', 'memphis', 'louisville', 'baltimore'
+  'mumbai', 'delhi', 'bangalore', 'hyderabad', 'ahmedabad', 
+  'chennai', 'kolkata', 'surat', 'pune', 'jaipur',
+  'lucknow', 'kanpur', 'nagpur', 'indore', 'thane',
+  'bhopal', 'visakhapatnam', 'pimpri-chinchwad', 'patna', 'vadodara',
+  'ghaziabad', 'ludhiana', 'agra', 'nashik', 'faridabad',
+  'meerut', 'rajkot', 'kalyan-dombivli', 'vasai-virar', 'varanasi'
 ];
 
 export const NICHES = [

@@ -205,7 +205,7 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
                   <tr key={lead.id} className={`hover:bg-slate-50 transition-colors ${lead.isBlurred ? 'select-none' : ''}`}>
                     <td className="py-4 px-6">
                       <div className={`font-medium text-slate-900 ${lead.isBlurred ? 'blur-sm' : ''}`}>{lead.name}</div>
-                      <div className="text-xs text-slate-500 mt-1">{city}, USA</div>
+                      <div className="text-xs text-slate-500 mt-1">{city}, India</div>
                     </td>
                     <td className="py-4 px-6">
                       <div className={`text-indigo-600 font-medium ${lead.isBlurred ? 'blur-sm' : ''}`}>{lead.handle}</div>
@@ -244,7 +244,7 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
         <div className="grid md:grid-cols-3 gap-6 text-sm text-slate-600">
           <div>
             <strong className="block text-slate-800 mb-1">How we collect this data</strong>
-            We cross-reference Google Maps business listings in {city} with Instagram graph data to find active businesses that do not have a valid URL in their profile or GMB listing.
+            We cross-reference Google Maps business listings in {city}, India with Instagram graph data to find active businesses that do not have a valid URL in their profile or GMB listing.
           </div>
           <div>
             <strong className="block text-slate-800 mb-1">Update Frequency</strong>

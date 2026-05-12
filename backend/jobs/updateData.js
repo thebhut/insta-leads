@@ -10,7 +10,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { processSearch } = require('../services/orchestrator');
 
-const CITIES_TO_UPDATE = ['new-york', 'los-angeles', 'chicago']; 
+const CITIES_TO_UPDATE = ['mumbai', 'delhi', 'bangalore']; 
 const NICHES_TO_UPDATE = ['restaurants', 'gyms', 'salons'];
 
 const DATA_EXPORT_PATH = path.join(__dirname, '../../frontend/src/data/real_leads.json');
