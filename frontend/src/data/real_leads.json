@@ -1,0 +1,11 @@
+{
+  "new-york": {
+    "restaurants": {
+      "lastUpdated": "2026-05-12T08:12:53.787Z",
+      "totalScanned": 15,
+      "missingWebsites": 0,
+      "isSimulated": false,
+      "leads": []
+    }
+  }
+}
