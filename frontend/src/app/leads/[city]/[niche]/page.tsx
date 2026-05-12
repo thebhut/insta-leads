@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { formatTitle, getNicheData, getRandomItems, getMockLeads, CITIES, NICHES } from '@/lib/pSEO';
 import Script from 'next/script';
+import realData from '@/data/real_leads.json';
 
 type Props = {
   params: Promise<{ city: string; niche: string }>;
@@ -56,22 +57,16 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
   let leads = [];
   let isSimulated = true;
   
-  try {
-    const realData = require('@/data/real_leads.json');
-    if (realData[resolvedParams.city]?.[resolvedParams.niche]) {
-      const cityNicheData = realData[resolvedParams.city][resolvedParams.niche];
-      leads = cityNicheData.leads;
-      isSimulated = false;
-      
-      // Update data summary with real counts
-      data.missingWebsites = cityNicheData.missingWebsites;
-      data.isSimulated = false;
-    } else {
-      const mock = getMockLeads(resolvedParams.city, resolvedParams.niche, 8, 'missing-website');
-      leads = mock.leads;
-      isSimulated = mock.isSimulated;
-    }
-  } catch (e) {
+  const typedRealData = realData as any;
+  if (typedRealData[resolvedParams.city]?.[resolvedParams.niche]) {
+    const cityNicheData = typedRealData[resolvedParams.city][resolvedParams.niche];
+    leads = cityNicheData.leads;
+    isSimulated = false;
+    
+    // Update data summary with real counts
+    data.missingWebsites = cityNicheData.missingWebsites;
+    data.isSimulated = false;
+  } else {
     const mock = getMockLeads(resolvedParams.city, resolvedParams.niche, 8, 'missing-website');
     leads = mock.leads;
     isSimulated = mock.isSimulated;
