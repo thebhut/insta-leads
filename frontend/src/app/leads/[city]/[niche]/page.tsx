@@ -60,7 +60,11 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
   const nicheData = cityData ? cityData[resolvedParams.niche] : null;
   
   if (nicheData) {
-    leads = nicheData.leads;
+    leads = [...nicheData.leads].sort((a: any, b: any) => {
+      const followersA = a.followers === 'N/A' ? -1 : parseInt(a.followers.replace(/[KkMm]/g, '')) * (a.followers.toLowerCase().includes('k') ? 1000 : a.followers.toLowerCase().includes('m') ? 1000000 : 1);
+      const followersB = b.followers === 'N/A' ? -1 : parseInt(b.followers.replace(/[KkMm]/g, '')) * (b.followers.toLowerCase().includes('k') ? 1000 : b.followers.toLowerCase().includes('m') ? 1000000 : 1);
+      return followersB - followersA;
+    });
     // Update data summary with real counts
     data.missingWebsites = nicheData.missingWebsites;
   }
