@@ -201,7 +201,7 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 relative">
-                {leads.map((lead, i) => (
+                {leads.map((lead: any, i: number) => (
                   <tr key={lead.id} className={`hover:bg-slate-50 transition-colors ${lead.isBlurred ? 'select-none' : ''}`}>
                     <td className="py-4 px-6">
                       <div className={`font-medium text-slate-900 ${lead.isBlurred ? 'blur-sm' : ''}`}>{lead.name}</div>
