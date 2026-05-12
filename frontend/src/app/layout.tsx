@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   description: "Generate highly-qualified local business leads. Find businesses like restaurants and salons that have an active Instagram presence but no website. Perfect for web design agencies.",
   keywords: ["web design leads", "local business leads", "businesses without websites", "instagram scraper", "lead generation"],
   verification: {
-    google: "YOUR_GOOGLE_VERIFICATION_CODE_HERE", // Replace with your code from Search Console
+    google: "oLTAX_wDTcE4FgdHCtsnSds9ySSqkMzL4_ys9H3ml9I",
   },
   openGraph: {
     title: "Insta Leads - Local Leads for Web Designers",
