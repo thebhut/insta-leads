@@ -1,11 +1,147 @@
 {
   "new-york": {
     "restaurants": {
-      "lastUpdated": "2026-05-12T08:12:53.787Z",
+      "lastUpdated": "2026-05-12T08:39:20.068Z",
       "totalScanned": 15,
       "missingWebsites": 0,
       "isSimulated": false,
-      "leads": []
+      "leads": [
+        {
+          "id": "Q3Jvd24g",
+          "name": "Crown Shy",
+          "handle": "@@crownshynyc",
+          "followers": "72K",
+          "formattedFollowers": "72K",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "U2FsYWQg",
+          "name": "Salad House",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "RWRkaWUn",
+          "name": "Eddie's Pizza",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "TWFuaGF0",
+          "name": "Manhatta",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "TGEgR3Jh",
+          "name": "La Grande Boucherie",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "QXUgQ2hl",
+          "name": "Au Cheval",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": true
+        },
+        {
+          "id": "TGUgQmVy",
+          "name": "Le Bernardin",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "TGUgQ291",
+          "name": "Le Coucou",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "MTgwMyBO",
+          "name": "1803 NYC",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "SG9sZSBJ",
+          "name": "Hole In The Wall - FiDi",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "Q3JhZnQg",
+          "name": "Craft New York",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "UGV0aXRl",
+          "name": "Petite Boucherie",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": true
+        },
+        {
+          "id": "TGEgTWVy",
+          "name": "La Mercerie",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": false
+        },
+        {
+          "id": "YWJjIGtp",
+          "name": "abc kitchen",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": true
+        },
+        {
+          "id": "QnViYnkn",
+          "name": "Bubby's",
+          "handle": "N/A",
+          "followers": "N/A",
+          "formattedFollowers": "N/A",
+          "hasWebsite": true,
+          "isTrending": true
+        }
+      ]
     }
   }
 }
