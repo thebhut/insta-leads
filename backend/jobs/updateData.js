@@ -37,21 +37,26 @@ async function executeRollingUpdate() {
       try {
         const results = await processSearch(query);
         
-        // Filter for businesses missing websites (your primary SEO lead target)
-        const leadsMissingWebsites = results.filter(b => !b.website);
+        // Try to find businesses missing websites (primary target)
+        let displayLeads = results.filter(b => !b.website);
+        
+        // If everyone has a website (like in NY), show the top 15 results anyway to prove it's REAL data
+        if (displayLeads.length === 0) {
+          displayLeads = results.slice(0, 15);
+        }
         
         const dataPayload = {
           lastUpdated: new Date().toISOString(),
           totalScanned: results.length,
-          missingWebsites: leadsMissingWebsites.length,
-          isSimulated: false, // EXTREMELY IMPORTANT: This removes the "Sample" badge
-          leads: leadsMissingWebsites.map(b => ({
+          missingWebsites: results.filter(b => !b.website).length,
+          isSimulated: false,
+          leads: displayLeads.map(b => ({
             id: Buffer.from(b.business_name).toString('base64').slice(0, 8),
             name: b.business_name,
             handle: b.instagram_username ? `@${b.instagram_username}` : 'N/A',
             followers: b.followers || 'N/A',
-            formattedFollowers: b.followers ? `${(parseInt(b.followers)/1000).toFixed(1)}k` : 'N/A',
-            hasWebsite: false,
+            formattedFollowers: b.followers ? (parseInt(b.followers) > 999 ? (parseInt(b.followers)/1000).toFixed(1) + 'k' : b.followers) : 'N/A',
+            hasWebsite: !!b.website,
             isTrending: Math.random() > 0.7
           }))
         };

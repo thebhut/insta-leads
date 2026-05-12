@@ -51,7 +51,31 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
   const niche = formatTitle(resolvedParams.niche);
   
   const data = getNicheData(resolvedParams.city, resolvedParams.niche);
-  const { isSimulated, leads } = getMockLeads(resolvedParams.city, resolvedParams.niche, 8, 'missing-website'); // Generate 8 leads for table
+  
+  // REAL DATA INGESTION
+  let leads = [];
+  let isSimulated = true;
+  
+  try {
+    const realData = require('@/data/real_leads.json');
+    if (realData[resolvedParams.city]?.[resolvedParams.niche]) {
+      const cityNicheData = realData[resolvedParams.city][resolvedParams.niche];
+      leads = cityNicheData.leads;
+      isSimulated = false;
+      
+      // Update data summary with real counts
+      data.missingWebsites = cityNicheData.missingWebsites;
+      data.isSimulated = false;
+    } else {
+      const mock = getMockLeads(resolvedParams.city, resolvedParams.niche, 8, 'missing-website');
+      leads = mock.leads;
+      isSimulated = mock.isSimulated;
+    }
+  } catch (e) {
+    const mock = getMockLeads(resolvedParams.city, resolvedParams.niche, 8, 'missing-website');
+    leads = mock.leads;
+    isSimulated = mock.isSimulated;
+  }
   
   const nearbyCities = getRandomItems(CITIES, 4, resolvedParams.city).map(formatTitle);
   const relatedNiches = getRandomItems(NICHES, 4, resolvedParams.niche).map(formatTitle);
