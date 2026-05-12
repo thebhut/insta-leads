@@ -4,6 +4,8 @@ import { formatTitle, getNicheData, getRandomItems, getMockLeads, CITIES, NICHES
 import Script from 'next/script';
 import realData from '@/data/real_leads.json';
 
+import LeadsTable from '@/components/LeadsTable';
+
 type Props = {
   params: Promise<{ city: string; niche: string }>;
 };
@@ -174,60 +176,17 @@ export default async function ProgrammaticSEOLandingPage({ params }: Props) {
           <div className="text-sm font-medium text-slate-500">Showing {leads.length} of {data.missingWebsites}</div>
         </div>
         
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          {/* Interactive Filters (Visual only for SEO Behavioral tracking) */}
-          <div className="bg-slate-50 p-4 border-b border-slate-200 flex gap-3 overflow-x-auto">
-            <button className="px-3 py-1.5 bg-white border border-slate-200 rounded-md text-sm font-medium text-slate-700 shadow-sm">Filter by Followers ▼</button>
-            <button className="px-3 py-1.5 bg-white border border-slate-200 rounded-md text-sm font-medium text-slate-700 shadow-sm">Verified Accounts Only</button>
-            <button className="px-3 py-1.5 bg-white border border-slate-200 rounded-md text-sm font-medium text-slate-700 shadow-sm ml-auto">Export CSV</button>
+        {leads.length > 0 ? (
+          <LeadsTable leads={leads} city={city} niche={niche} />
+        ) : (
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden py-20 text-center">
+            <div className="flex flex-col items-center justify-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mb-4"></div>
+              <p className="text-slate-500 font-medium">Fresh scan for {niche} in {city} is scheduled...</p>
+              <p className="text-xs text-slate-400 mt-1">Real data will appear here automatically once the search completes.</p>
+            </div>
           </div>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-white border-b border-slate-200">
-                  <th className="py-4 px-6 font-semibold text-slate-800">Business Name</th>
-                  <th className="py-4 px-6 font-semibold text-slate-800">Instagram Handle</th>
-                  <th className="py-4 px-6 font-semibold text-slate-800">Followers</th>
-                  <th className="py-4 px-6 font-semibold text-slate-800 text-right">Action</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 relative">
-                {leads.length > 0 ? (
-                  leads.map((lead: any, i: number) => (
-                    <tr key={lead.id} className="hover:bg-slate-50 transition-colors">
-                      <td className="py-4 px-6">
-                        <div className="font-medium text-slate-900">{lead.name}</div>
-                        <div className="text-xs text-slate-500 mt-1">{city}, India</div>
-                      </td>
-                      <td className="py-4 px-6">
-                        <div className="text-indigo-600 font-medium">{lead.handle}</div>
-                      </td>
-                      <td className="py-4 px-6">
-                        <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
-                          {lead.formattedFollowers}
-                        </div>
-                      </td>
-                      <td className="py-4 px-6 text-right">
-                        <button className="text-sm font-semibold text-indigo-600 hover:text-indigo-800">Analyze</button>
-                      </td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan={4} className="py-20 text-center">
-                      <div className="flex flex-col items-center justify-center">
-                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600 mb-4"></div>
-                        <p className="text-slate-500 font-medium">Fresh scan for {niche} in {city} is scheduled...</p>
-                        <p className="text-xs text-slate-400 mt-1">Real data will appear here automatically once the search completes.</p>
-                      </div>
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        )}
       </div>
 
       {/* EEAT Methodology Section */}

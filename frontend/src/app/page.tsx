@@ -140,7 +140,7 @@ export default function Home() {
       <div className="search-box" style={{ display: 'flex', gap: '0.5rem', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
         <input
           type="text"
-          placeholder="Search datasets (e.g. fastest growing cafes in Miami)"
+          placeholder="Search datasets (e.g. fastest growing gyms in Mumbai)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
@@ -205,25 +205,25 @@ export default function Home() {
           <div>
             <h4 style={{ fontWeight: 'bold', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center' }}><span style={{ color: '#3b82f6', marginRight: '0.5rem' }}>🔥</span> Viral & Trending</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li><a href="/trends/austin/restaurants" style={{ color: '#4f46e5', textDecoration: 'none' }}>Fastest Growing Restaurants in Austin</a></li>
-              <li><a href="/trends/los-angeles/gyms" style={{ color: '#4f46e5', textDecoration: 'none' }}>Trending Gyms in Los Angeles</a></li>
-              <li><a href="/trends/chicago/cafes" style={{ color: '#4f46e5', textDecoration: 'none' }}>Viral Cafes in Chicago</a></li>
+              <li><a href="/trends/mumbai/restaurants" style={{ color: '#4f46e5', textDecoration: 'none' }}>Fastest Growing Restaurants in Mumbai</a></li>
+              <li><a href="/trends/bangalore/gyms" style={{ color: '#4f46e5', textDecoration: 'none' }}>Trending Gyms in Bangalore</a></li>
+              <li><a href="/trends/delhi/cafes" style={{ color: '#4f46e5', textDecoration: 'none' }}>Viral Cafes in Delhi</a></li>
             </ul>
           </div>
           <div>
             <h4 style={{ fontWeight: 'bold', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center' }}><span style={{ color: '#10b981', marginRight: '0.5rem' }}>📊</span> Local Rankings</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li><a href="/directory/new-york/salons" style={{ color: '#4f46e5', textDecoration: 'none' }}>Top Salons in New York</a></li>
-              <li><a href="/directory/houston/dentists" style={{ color: '#4f46e5', textDecoration: 'none' }}>Best Dentists in Houston</a></li>
-              <li><a href="/directory/phoenix/plumbers" style={{ color: '#4f46e5', textDecoration: 'none' }}>Top Ranked Plumbers in Phoenix</a></li>
+              <li><a href="/directory/pune/salons" style={{ color: '#4f46e5', textDecoration: 'none' }}>Top Salons in Pune</a></li>
+              <li><a href="/directory/hyderabad/dentists" style={{ color: '#4f46e5', textDecoration: 'none' }}>Best Dentists in Hyderabad</a></li>
+              <li><a href="/directory/ahmedabad/plumbers" style={{ color: '#4f46e5', textDecoration: 'none' }}>Top Ranked Plumbers in Ahmedabad</a></li>
             </ul>
           </div>
           <div>
             <h4 style={{ fontWeight: 'bold', color: '#0f172a', marginBottom: '1rem', display: 'flex', alignItems: 'center' }}><span style={{ color: '#ef4444', marginRight: '0.5rem' }}>💻</span> Digital Deficits</h4>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li><a href="/leads/denver/boutiques" style={{ color: '#4f46e5', textDecoration: 'none' }}>Denver Boutiques Missing Websites</a></li>
-              <li><a href="/leads/miami/spas" style={{ color: '#4f46e5', textDecoration: 'none' }}>Miami Spas Without Websites</a></li>
-              <li><a href="/reports/top-us-cities-without-websites" style={{ color: '#4f46e5', textDecoration: 'none', fontWeight: '600' }}>Report: Cities Most Dependent on IG &rarr;</a></li>
+              <li><a href="/leads/chennai/boutiques" style={{ color: '#4f46e5', textDecoration: 'none' }}>Chennai Boutiques Missing Websites</a></li>
+              <li><a href="/leads/kolkata/spas" style={{ color: '#4f46e5', textDecoration: 'none' }}>Kolkata Spas Without Websites</a></li>
+              <li><a href="/reports/top-indian-cities-without-websites" style={{ color: '#4f46e5', textDecoration: 'none', fontWeight: '600' }}>Report: Cities Most Dependent on IG &rarr;</a></li>
             </ul>
           </div>
         </div>

@@ -13,8 +13,7 @@ export default function TermsPage() {
         
         <h2 className="text-2xl font-bold mt-8 mb-4">1. Data Accuracy Disclaimer</h2>
         <div className="bg-amber-50 border-l-4 border-amber-500 p-6 mb-8 rounded-r-lg text-amber-900">
-          <p className="m-0 font-medium">Insta Leads aggregates data from third-party APIs (including mapping services and social networks). While we strive for high accuracy through our scheduled rolling updates, <strong>we cannot guarantee the real-time accuracy, completeness, or reliability of follower counts, business statuses, or digital infrastructure metrics.</strong></p>
-          <p className="mt-4 mb-0 font-medium">Datasets marked as "Sample Dataset" or "Demo Preview" utilize algorithmic modeling for UI demonstration purposes while our backend scrapers queue real data. Do not use sample datasets for financial or investment decisions.</p>
+          <p className="m-0 font-medium">Insta Leads aggregates data from verified third-party sources. While we strive for high accuracy through our scheduled rolling updates (every 7 days), <strong>we cannot guarantee the real-time accuracy of follower counts or business statuses.</strong></p>
         </div>
 
         <h2 className="text-2xl font-bold mt-8 mb-4">2. Acceptable Use</h2>
